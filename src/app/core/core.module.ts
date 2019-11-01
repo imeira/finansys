@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from '../../in-memory-database';
-// import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { InMemoryDatabase } from '../../in-memory-database';
     RouterModule
   ],
   declarations: [
-    // NavbarComponent
+    NavbarComponent
   ],
   exports: [
     // shared modules
@@ -28,7 +28,7 @@ import { InMemoryDatabase } from '../../in-memory-database';
     HttpClientModule,
 
     // shared components
-    // NavbarComponent
+    NavbarComponent
   ]
 })
 export class CoreModule { }
