@@ -46,7 +46,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   submitForm() {
     this.submittingForm = true;
 
-    if (this.currentAction == 'new') {
+    if (this.currentAction === 'new') {
       this.createResource();
     } else { // currentAction == "edit"
       this.updateResource();
@@ -57,7 +57,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   // PRIVATE METHODS
 
   protected setCurrentAction() {
-    if (this.route.snapshot.url[0].path == 'new') {
+    if (this.route.snapshot.url[0].path === 'new') {
       this.currentAction = 'new';
     } else {
       this.currentAction = 'edit';
@@ -65,7 +65,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   protected loadResource() {
-    if (this.currentAction == 'edit') {
+    if (this.currentAction === 'edit') {
 
       this.route.paramMap.pipe(
         switchMap(params => this.resourceService.getById(+params.get('id')))
@@ -82,7 +82,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
 
   protected setPageTitle() {
-    if (this.currentAction == 'new') {
+    if (this.currentAction === 'new') {
       this.pageTitle = this.creationPageTitle();
     } else {
       this.pageTitle = this.editionPageTitle();
@@ -103,6 +103,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     this.resourceService.create(resource)
       .subscribe(
+        // tslint:disable-next-line:no-shadowed-variable
         resource => this.actionsForSuccess(resource),
         error => this.actionsForError(error)
       );
@@ -114,6 +115,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     this.resourceService.update(resource)
       .subscribe(
+        // tslint:disable-next-line:no-shadowed-variable
         resource => this.actionsForSuccess(resource),
         error => this.actionsForError(error)
       );
