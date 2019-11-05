@@ -35,10 +35,8 @@ export class ReportsComponent implements OnInit {
   categories: Category[] = [];
   entries: Entry[] = [];
 
-  // @ts-ignore
-  @ViewChild('month') month: ElementRef = null;
-  // @ts-ignore
-  @ViewChild('year') year: ElementRef = null;
+  @ViewChild('month', {static: false}) month: ElementRef = null;
+  @ViewChild('year', {static: false}) year: ElementRef = null;
 
   constructor(private entryService: EntryService, private categoryService: CategoryService) { }
 
@@ -72,7 +70,7 @@ export class ReportsComponent implements OnInit {
     let revenueTotal = 0;
 
     this.entries.forEach(entry => {
-      if (entry.type === 'revenue') {
+      if (entry.type == 'revenue') {
         revenueTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' });
       } else {
         expenseTotal += currencyFormatter.unformat(entry.amount, { code: 'BRL' });
